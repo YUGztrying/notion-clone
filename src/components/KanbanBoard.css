@@ -1,0 +1,387 @@
+.kanban {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--black);
+}
+
+.kanban-header {
+  padding: var(--space-2xl);
+  border-bottom: 1px solid var(--glass-border);
+  animation: slideInRight 0.4s ease-out;
+}
+
+.kanban-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-sm);
+}
+
+.kanban-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+}
+
+.kanban-board {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  overflow: hidden;
+}
+
+.kanban-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideInUp var(--transition-base) ease-out both;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--blur-md));
+  border-radius: 16px;
+}
+
+.column-header {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.column-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.column-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.column-count {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.column-revenue {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.column-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Project Card */
+.project-card {
+  padding: var(--space-lg);
+  border-radius: 12px;
+  cursor: grab;
+  transition: all var(--transition-base);
+  animation: slideInUp var(--transition-base) ease-out both;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+}
+
+.project-card:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.project-card:active {
+  cursor: grabbing;
+}
+
+.project-card.blocked {
+  opacity: 0.7;
+  border-style: dashed;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.card-expand {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-fast);
+}
+
+.card-expand:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.card-blocked-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  background: var(--glass-active);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-revenue {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.revenue-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.revenue-value {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Expanded Card */
+.card-expanded {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--glass-border);
+  animation: slideInUp 0.2s ease-out;
+}
+
+.card-section {
+  margin-bottom: var(--space-md);
+}
+
+.card-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+  opacity: 0.5;
+}
+
+.card-section-value {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.card-input {
+  width: 100%;
+  padding: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--white);
+}
+
+.card-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.card-action {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+}
+
+.card-action:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-action-danger:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Add Project Form */
+.add-form {
+  padding: var(--space-lg);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  animation: slideInUp 0.2s ease-out;
+}
+
+.add-input {
+  width: 100%;
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--white);
+}
+
+.add-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.add-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.add-button {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--glass-border);
+}
+
+.add-submit {
+  background: var(--glass-active);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.add-submit:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.add-cancel {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.add-cancel:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.add-project-button {
+  width: 100%;
+  padding: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all var(--transition-base);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--glass-border);
+}
+
+.add-project-button:hover {
+  border-style: solid;
+  color: var(--white);
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .kanban-board {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .kanban-column {
+    max-height: 500px;
+  }
+
+  .kanban-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .kanban {
+    padding: 0;
+  }
+
+  .kanban-header {
+    padding: var(--space-lg);
+  }
+
+  .kanban-title {
+    font-size: 2rem;
+  }
+
+  .kanban-board {
+    padding: var(--space-md);
+  }
+
+  .column-content {
+    padding: var(--space-md);
+  }
+}

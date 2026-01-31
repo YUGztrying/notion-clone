@@ -49,6 +49,10 @@
   font-weight: 800;
   font-size: 1.2rem;
   letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
 }
 
 .drawer-close {
@@ -279,7 +283,18 @@
   }
 
   .nav-brand-text {
-    display: none;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    /* Reduced to prevent overlap with menu button */
+    margin-right: var(--space-xs);
+  }
+
+  .nav-status {
+    gap: var(--space-xs);
   }
 
   .status-text {
@@ -287,7 +302,7 @@
   }
 
   .nav-bar {
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
   }
 
   .floating-menu {
@@ -299,6 +314,12 @@
     width: 48px;
     height: 48px;
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand-text {
+    display: none;
   }
 }
 

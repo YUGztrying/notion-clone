@@ -11,6 +11,7 @@ const BLOCK_TYPES = [
 
 export default function Editor({ documents, onAddDocument, onUpdateDocument }) {
   const [activeDoc, setActiveDoc] = useState(null)
+  const [showDocSidebar, setShowDocSidebar] = useState(false)
   const [blocks, setBlocks] = useState([{ id: Date.now(), type: 'text', content: '' }])
   const [focusedBlock, setFocusedBlock] = useState(null)
   const [showSlashMenu, setShowSlashMenu] = useState(false)
@@ -135,12 +136,17 @@ export default function Editor({ documents, onAddDocument, onUpdateDocument }) {
 
   return (
     <div className="editor">
-      <div className="editor-sidebar">
+      <div className={`editor-sidebar ${showDocSidebar ? 'mobile-show' : ''}`}>
         <div className="sidebar-header">
           <h2 className="sidebar-title">DOCUMENTS</h2>
-          <button className="sidebar-action" onClick={createNewDocument}>
-            [+NEW]
-          </button>
+          <div className="sidebar-actions-group">
+            <button className="sidebar-action" onClick={createNewDocument}>
+              [+NEW]
+            </button>
+            <button className="sidebar-close-mobile" onClick={() => setShowDocSidebar(false)}>
+              ✕
+            </button>
+          </div>
         </div>
 
         <div className="document-list">
@@ -155,7 +161,10 @@ export default function Editor({ documents, onAddDocument, onUpdateDocument }) {
               <button
                 key={doc.id}
                 className={`document-item ${activeDoc === doc.id ? 'active' : ''}`}
-                onClick={() => setActiveDoc(doc.id)}
+                onClick={() => {
+                  setActiveDoc(doc.id)
+                  setShowDocSidebar(false)
+                }}
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="document-icon">▸</div>
@@ -187,6 +196,12 @@ export default function Editor({ documents, onAddDocument, onUpdateDocument }) {
         ) : (
           <div className="editor-canvas">
             <div className="editor-header">
+              <button
+                className="mobile-sidebar-toggle"
+                onClick={() => setShowDocSidebar(true)}
+              >
+                [DOCS]
+              </button>
               <input
                 type="text"
                 className="editor-title-input"
@@ -212,7 +227,15 @@ export default function Editor({ documents, onAddDocument, onUpdateDocument }) {
 
             {/* Slash Command Menu */}
             {showSlashMenu && (
-              <div className="slash-menu glass-strong">
+              <div
+                className="slash-menu glass-strong"
+                style={window.innerWidth > 768 ? {
+                  position: 'absolute',
+                  top: `${slashMenuPosition.top}px`,
+                  left: `${slashMenuPosition.left}px`,
+                  transform: 'none'
+                } : {}}
+              >
                 <div className="slash-menu-header">
                   <span>BLOCKS</span>
                 </div>

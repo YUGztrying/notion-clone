@@ -125,6 +125,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 180px;
 }
 
 .document-meta {
@@ -442,10 +443,79 @@
 @media (max-width: 768px) {
   .editor {
     grid-template-columns: 1fr;
+    position: relative;
   }
 
   .editor-sidebar {
-    display: none;
+    position: fixed;
+    top: 60px;
+    /* Below Top Nav */
+    left: -100%;
+    bottom: 0;
+    width: 280px;
+    z-index: 500;
+    transition: left var(--transition-base);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    background-color: var(--black);
+    display: flex;
+    /* Override display: none */
+  }
+
+  .editor-sidebar.mobile-show {
+    left: 0;
+  }
+
+  .sidebar-close-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    border-radius: 4px;
+    background: var(--glass-bg);
+  }
+
+  .editor-header {
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .mobile-sidebar-toggle {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    background: var(--glass-active);
+    border: 1px solid var(--glass-border);
+    flex-shrink: 0;
+  }
+
+  .editor-title-input {
+    font-size: 1.5rem;
+    height: auto;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .editor-blocks {
+    padding: var(--space-lg);
+  }
+
+  .block-h1 {
+    font-size: 1.8rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .block-h2 {
+    font-size: 1.4rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .editor-hints {
@@ -454,5 +524,20 @@
 
   .slash-menu {
     max-width: calc(100vw - 2rem);
+    min-width: 280px;
+  }
+
+  .editor-empty-title {
+    font-size: 1.3rem;
+    /* Reduced to fit within screen width */
+    /* Removed word-break: break-all */
+  }
+}
+
+@media (min-width: 769px) {
+
+  .sidebar-close-mobile,
+  .mobile-sidebar-toggle {
+    display: none;
   }
 }

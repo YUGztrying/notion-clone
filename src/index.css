@@ -37,7 +37,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -62,7 +63,12 @@ body {
 }
 
 /* Typography System */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 800;
   line-height: 1.1;
@@ -123,7 +129,8 @@ button {
   transition: all var(--transition-base);
 }
 
-input, textarea {
+input,
+textarea {
   font-family: var(--font-mono);
   color: var(--white);
   background: transparent;
@@ -141,6 +148,7 @@ textarea::placeholder {
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -152,6 +160,7 @@ textarea::placeholder {
     transform: translateX(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -162,15 +171,19 @@ textarea::placeholder {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -187,6 +200,21 @@ textarea::placeholder {
 
 .animate-fade {
   animation: fadeIn var(--transition-slow) ease-out;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
 }
 
 /* Glassmorphic Utility Classes */

@@ -37,6 +37,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .kanban-subtitle {
@@ -472,11 +475,17 @@
   }
 
   .kanban-header {
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
   }
 
   .kanban-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    letter-spacing: 0;
+  }
+
+  .kanban-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
   }
 
   .kanban-board {
@@ -484,7 +493,7 @@
   }
 
   .column-header {
-    padding: var(--space-lg);
+    padding: var(--space-md);
   }
 
   .column-content {
@@ -494,6 +503,10 @@
   .project-card {
     padding: var(--space-md);
   }
+
+  .column-title {
+    font-size: 1.05rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -502,7 +515,12 @@
   }
 
   .kanban-title {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
+  }
+
+  .kanban-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
   }
 
   .kanban-board {
@@ -510,16 +528,42 @@
   }
 
   .column-header {
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
   }
 
   .column-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .column-count {
-    width: 28px;
-    height: 28px;
-    font-size: 0.8rem;
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+
+  .column-revenue {
+    font-size: 0.95rem;
+  }
+
+  .project-card {
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+@media (max-width: 360px) {
+  .kanban-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .kanban-title {
+    font-size: 1.2rem;
+  }
+
+  .kanban-subtitle {
+    font-size: 0.65rem;
+  }
+
+  .column-title {
+    font-size: 0.85rem;
   }
 }

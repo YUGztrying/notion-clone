@@ -54,6 +54,9 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .typing-cursor {
@@ -80,7 +83,7 @@
 /* KPI Grid */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-2xl);
 }
@@ -535,15 +538,21 @@
 
 @media (max-width: 768px) {
   .dashboard {
-    padding: var(--space-lg);
+    padding: var(--space-md);
   }
 
   .dashboard-header {
-    padding: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
   }
 
   .dashboard-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
   }
 
   .kpi-grid {
@@ -552,7 +561,11 @@
   }
 
   .kpi-value {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
+  }
+
+  .kpi-label {
+    font-size: 0.7rem;
   }
 
   .timeline-item {
@@ -569,11 +582,15 @@
     font-size: 0.7rem;
     padding: var(--space-xs) var(--space-sm);
   }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
 }
 
 @media (max-width: 480px) {
   .dashboard {
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
   }
 
   .dashboard-header {
@@ -581,14 +598,62 @@
   }
 
   .dashboard-title {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
+    letter-spacing: 0;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .kpi-grid {
+    gap: var(--space-sm);
   }
 
   .kpi-value {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
 
   .kpi-card {
-    padding: var(--space-lg);
+    padding: var(--space-md);
+  }
+
+  .kpi-label {
+    font-size: 0.65rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .timeline-section, .ledger-section {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard {
+    padding: var(--space-sm);
+  }
+
+  .dashboard-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .dashboard-title {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.6rem;
+  }
+
+  .kpi-value {
+    font-size: 1.6rem;
+  }
+
+  .kpi-card {
+    padding: var(--space-sm) var(--space-md);
   }
 }

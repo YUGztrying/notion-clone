@@ -17,6 +17,7 @@
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .dashboard-header::before {
@@ -228,6 +229,9 @@
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 0.05em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .section-action {
@@ -543,16 +547,18 @@
 
   .dashboard-header {
     padding: var(--space-md) var(--space-lg);
+    overflow: hidden;
   }
 
   .dashboard-title {
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 8vw, 1.75rem);
     letter-spacing: -0.01em;
+    max-width: 100%;
   }
 
   .dashboard-subtitle {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-size: clamp(0.6rem, 3.5vw, 0.7rem);
+    letter-spacing: 0.1em;
   }
 
   .kpi-grid {
@@ -594,17 +600,19 @@
   }
 
   .dashboard-header {
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    overflow: hidden;
   }
 
   .dashboard-title {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 7vw, 1.4rem);
     letter-spacing: 0;
+    max-width: 100%;
   }
 
   .dashboard-subtitle {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
+    font-size: clamp(0.55rem, 3vw, 0.65rem);
+    letter-spacing: 0.08em;
   }
 
   .kpi-grid {
@@ -634,19 +642,22 @@
 
 @media (max-width: 360px) {
   .dashboard {
-    padding: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
   }
 
   .dashboard-header {
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
+    overflow: hidden;
   }
 
   .dashboard-title {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 6.5vw, 1.2rem);
+    max-width: 100%;
   }
 
   .dashboard-subtitle {
-    font-size: 0.6rem;
+    font-size: clamp(0.5rem, 2.5vw, 0.6rem);
+    letter-spacing: 0.05em;
   }
 
   .kpi-value {
@@ -655,5 +666,9 @@
 
   .kpi-card {
     padding: var(--space-sm) var(--space-md);
+  }
+
+  .section-title {
+    font-size: clamp(0.9rem, 5vw, 1rem);
   }
 }
